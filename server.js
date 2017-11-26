@@ -1,115 +1,35 @@
-﻿const express = require("express");
+﻿const path = require('path');
+const express = require('express');
+const exphbs = require('express-handlebars');
+
+
 const app = express();
-const bodyParser = require("body-parser");
-const sqlDbFactory = require('knex');
-const _ = require("lodash");
+const port = 3000;
 
-/**
- * The db object to perform queries on
- */
-let sqlDb;
+app.engine('.hbs', exphbs({
+    defaultLayout: 'main',
+    extname: '.hbs',
+    layoutsDir: path.join(__dirname, 'views/layouts')
+}));
 
-/**
- * this method initialise the database, using sqlite if is run locally, postgre if run on heroku
- */
-function initSqlDB() {
-    /* Locally we should launch the app with TEST=true to use SQLlite:
+app.set('view engine', '.hbs');
 
-     > TEST=true node ./index.js
+app.set('views', path.join(__dirname, 'views'));
 
-     */
-    /* todo remove this example
-    if (process.env.TEST) {
-        sqlDb = sqlDbFactory({
-            client: "sqlite3",
-            debug: true,
-            connection: {
-                filename: "./Travlendar+DB.sqlite"
-            },
-            useNullAsDefault: true
-        });
-    } else {
-        sqlDb = sqlDbFactory({
-            debug: true,
-            client: "pg",
-            connection: process.env.DATABASE_URL,
-            ssl: true
-        });
-    }
-    */
-}
+app.get('/', (request, response) => {
+  response.send('Hello from Express!')
+})
 
-//all the json files needed to build the database
+app.get('/', (request, response) => {
+    response.render('home', {
+        name: 'John'
+    })
+})
 
-//todo: let locationsList = require("./other/json/locations.json");
+app.listen(port, (err) => {
+  if (err) {
+    return console.log('something bad happened', err)
+  }
 
-/**
- * This method creates the tables reading from the json files if the tables do not exist already
- */
-function initDb() {
-
-    //table for all locations
-    /* todo remove this example
-    sqlDb.schema.hasTable("locations").then(exists => {
-
-        if (!exists) {
-            sqlDb.schema
-                .createTable("locations", table => {
-                    table.integer("id");
-                    table.string("name");
-                    table.double("lng");
-                })
-                .then(() => {
-                    return Promise.all(
-                        _.map(locationsList, p => {
-                            return sqlDb("locations").insert(p);
-                        })
-                    );
-                });
-        } else {
-            return true;
-        }
-    });
-    return;*/
-}
-
-/**
- * the port we want to run our app on
- */
-let serverPort = process.env.PORT || 8080;
-
-app.use(express.static(__dirname + "/public"));
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-
-/* REST entry point for locations */
-/* todo remove
-app.get("/locations", function(req, res) {
-    let idLoc = _.get(req, "query.id", -1);
-    let myQuery = sqlDb("locations");
-
-    //we check if the query asks for just one location or for all of them
-    if(idLoc == -1) {
-        myQuery.then(result => {
-            res.send(JSON.stringify(result));
-        });
-    } else if(idLoc != -1) {
-        myQuery.where({id: idLoc}).then(result => {
-            res.send(JSON.stringify(result));
-        });
-    }
-});
-*/
-
-
-app.set("port", serverPort);
-
-initSqlDB();
-initDb();
-
-/* Start the server on port 8080 */
-app.listen(serverPort, function() {
-  console.log(`Your app is ready at port ${serverPort}`);
-});
+  console.log(`server is listening on ${port}`)
+})
