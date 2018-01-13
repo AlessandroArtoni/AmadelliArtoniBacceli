@@ -10,6 +10,11 @@ The project includes five assignments:
 1. The preparation of a **Requirement Analysis and Specification Document (RASD)** for the problem described.
 2. The definition of the **Design Document (DD)** for the system considered in point 1 above.
 
+### Deliverables
+1. **RASD**: download [here]
+(https://github.com/AlessandroArtoni/AmadelliArtoniBacceli/blob/master/Delivery/RASD%201.2.2.pdf)
+2. **DD**: download [here](https://github.com/AlessandroArtoni/AmadelliArtoniBacceli/blob/master/Delivery/Design%20Document%201.2.pdf).
+
 
 ### The problem ###
 Many endeavors require scheduling meetings at various locations all across a city or a region (e.g. around Lombardy), wheter for work or personal reasons (e.g., meeting the CEO of a partner company, going to the gym, taking children to practice, etc.). The goal of this project is to create a calendar-base application that:
