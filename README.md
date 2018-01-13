@@ -7,13 +7,9 @@ Authors: Federico Amadelli, Alessandro Artoni, Alessio Baccelli
 The objective of this project is to apply in practice what we learn during lectures with the purpose of becoming  confident  with  software engineering  practices  and  able  to  address  new  software engineering issues in a rigorous way.
 The project includes five assignments:
 
-1. The preparation of a **Requirement Analysis and Specification Document (RASD)** for the problem described.
-2. The definition of the **Design Document (DD)** for the system considered in point 1 above.
+1. The preparation of a **Requirement Analysis and Specification Document (RASD)** for the problem described. [download](https://github.com/AlessandroArtoni/AmadelliArtoniBacceli/blob/master/Delivery/RASD%201.2.2.pdf).
+2. The definition of the **Design Document (DD)** for the system considered in point 1 above. [download](https://github.com/AlessandroArtoni/AmadelliArtoniBacceli/blob/master/Delivery/Design%20Document%201.2.pdf).
 
-### Deliverables
-1. **RASD**: download [here]
-(https://github.com/AlessandroArtoni/AmadelliArtoniBacceli/blob/master/Delivery/RASD%201.2.2.pdf)
-2. **DD**: download [here](https://github.com/AlessandroArtoni/AmadelliArtoniBacceli/blob/master/Delivery/Design%20Document%201.2.pdf).
 
 
 ### The problem ###
